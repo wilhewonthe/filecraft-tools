@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FileCraft — Free Online File Tools | PDF, Image Compress, Resize</title>
+  <meta name="description" content="Free online tools for PDF merging, splitting, image compression, resizing, and format conversion. 100% private — your files never leave your browser.">
+  <meta name="keywords" content="pdf merge, pdf split, image compress, image resize, webp to png, pdf to image, free online tools">
+  <meta property="og:title" content="FileCraft — Free Online File Tools">
+  <meta property="og:description" content="PDF merge, image compress, resize & convert. 100% private — files never leave your browser.">
+  <meta property="og:type" content="website">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🔧</text></svg>">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --bg: #0f1117;
+      --surface: #1a1d27;
+      --surface2: #242736;
+      --accent: #6c63ff;
+      --accent2: #ff6b6b;
+      --text: #e4e4e7;
+      --text2: #a1a1aa;
+      --border: #2e3144;
+      --success: #22c55e;
+    }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+    .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+    
+    /* Header */
+    header {
+      padding: 20px 0;
+      border-bottom: 1px solid var(--border);
+      background: var(--surface);
+    }
+    header .container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .logo {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--text);
+      text-decoration: none;
+    }
+    .logo span { color: var(--accent); }
+    .privacy-badge {
+      background: var(--surface2);
+      border: 1px solid var(--success);
+      color: var(--success);
+      padding: 6px 14px;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      font-weight: 500;
+    }
+    
+    /* Hero */
+    .hero {
+      text-align: center;
+      padding: 80px 0 60px;
+    }
+    .hero h1 {
+      font-size: 2.8rem;
+      font-weight: 800;
+      margin-bottom: 16px;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .hero p {
+      font-size: 1.2rem;
+      color: var(--text2);
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    
+    /* Tool Grid */
+    .tools-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 20px;
+      padding: 40px 0 80px;
+    }
+    .tool-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 28px;
+      text-decoration: none;
+      color: var(--text);
+      transition: all 0.2s ease;
+      cursor: pointer;
+    }
+    .tool-card:hover {
+      border-color: var(--accent);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 32px rgba(108, 99, 255, 0.15);
+    }
+    .tool-icon {
+      font-size: 2.2rem;
+      margin-bottom: 16px;
+      display: block;
+    }
+    .tool-card h3 {
+      font-size: 1.2rem;
+      margin-bottom: 8px;
+    }
+    .tool-card p {
+      color: var(--text2);
+      font-size: 0.9rem;
+    }
+    .tool-tag {
+      display: inline-block;
+      background: var(--surface2);
+      color: var(--accent);
+      padding: 3px 10px;
+      border-radius: 8px;
+      font-size: 0.75rem;
+      margin-top: 12px;
+      font-weight: 500;
+    }
+    
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 40px 0;
+      border-top: 1px solid var(--border);
+      color: var(--text2);
+      font-size: 0.85rem;
+    }
+    footer a { color: var(--accent); text-decoration: none; }
+    footer a:hover { text-decoration: underline; }
+    
+    .support-box {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 20px;
+      margin: 0 auto 40px;
+      max-width: 500px;
+      text-align: center;
+    }
+    .support-box p { color: var(--text2); margin-bottom: 12px; }
+    .support-btn {
+      display: inline-block;
+      background: var(--accent);
+      color: white;
+      padding: 10px 24px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: opacity 0.2s;
+    }
+    .support-btn:hover { opacity: 0.9; }
+    
+    @media (max-width: 640px) {
+      .hero h1 { font-size: 2rem; }
+      .hero { padding: 50px 0 30px; }
+      .tools-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <a href="/" class="logo">File<span>Craft</span></a>
+      <span class="privacy-badge">🔒 100% Private — Files never leave your browser</span>
+    </div>
+  </header>
+  
+  <main class="container">
+    <section class="hero">
+      <h1>Free File Tools That Respect Your Privacy</h1>
+      <p>Merge PDFs, compress images, convert formats — all processed right in your browser. No uploads, no accounts, no limits.</p>
+    </section>
+    
+    <section class="tools-grid">
+      <a href="/merge-pdf/" class="tool-card">
+        <span class="tool-icon">📄</span>
+        <h3>Merge PDF</h3>
+        <p>Combine multiple PDFs into one file. Drag, reorder, merge — instant download.</p>
+        <span class="tool-tag">PDF</span>
+      </a>
+      
+      <a href="/compress-image/" class="tool-card">
+        <span class="tool-icon">🖼️</span>
+        <h3>Compress Image</h3>
+        <p>Reduce image file size with adjustable quality. Supports JPG, PNG, WebP.</p>
+        <span class="tool-tag">Image</span>
+      </a>
+      
+      <a href="/resize-image/" class="tool-card">
+        <span class="tool-icon">📐</span>
+        <h3>Resize Image</h3>
+        <p>Resize images to exact dimensions. Maintain aspect ratio or set custom size.</p>
+        <span class="tool-tag">Image</span>
+      </a>
+      
+      <a href="/convert-image/" class="tool-card">
+        <span class="tool-icon">🔄</span>
+        <h3>Convert Image Format</h3>
+        <p>Convert between JPG, PNG, WebP, and more. Batch conversion supported.</p>
+        <span class="tool-tag">Image</span>
+      </a>
+      
+      <a href="/pdf-to-image/" class="tool-card">
+        <span class="tool-icon">📸</span>
+        <h3>PDF to Image</h3>
+        <p>Convert PDF pages to high-quality PNG or JPG images.</p>
+        <span class="tool-tag">PDF</span>
+      </a>
+      
+      <a href="/split-pdf/" class="tool-card">
+        <span class="tool-icon">✂️</span>
+        <h3>Split PDF</h3>
+        <p>Extract specific pages from a PDF or split into individual documents.</p>
+        <span class="tool-tag">PDF</span>
+      </a>
+    </section>
+    
+    <div class="support-box">
+      <p>If FileCraft saves you time, consider buying me a coffee ☕</p>
+      <a href="https://ko-fi.com/filecraft" target="_blank" class="support-btn">Support FileCraft</a>
+    </div>
+  </main>
+  
+  <footer>
+    <div class="container">
+      <p>All tools run entirely in your browser — your files are never uploaded to any server.</p>
+      <p style="margin-top: 8px;">
+        <a href="https://github.com/wilhewonthe/filecraft-tools" target="_blank">GitHub</a> · 
+        Built with ❤️ by <a href="https://github.com/wilhewonthe" target="_blank">wilhewonthe</a>
+      </p>
+    </div>
+  </footer>
+  
+  <script>
+    // Simple analytics-free visitor counter (optional, can add later)
+    console.log('FileCraft loaded — all processing is client-side');
+  </script>
+</body>
+</html>

@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Resize Image Online Free — Exact Dimensions or Aspect Ratio | FileCraft</title>
+  <meta name="description" content="Free online image resizer. Resize to exact dimensions or maintain aspect ratio. No upload needed — 100% private browser-based tool.">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📐</text></svg>">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    :root { --bg:#0f1117;--surface:#1a1d27;--surface2:#242736;--accent:#6c63ff;--text:#e4e4e7;--text2:#a1a1aa;--border:#2e3144;--success:#22c55e; }
+    body { font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif; background:var(--bg); color:var(--text); line-height:1.6; }
+    .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+    header { padding:20px 0; border-bottom:1px solid var(--border); background:var(--surface); }
+    header .container { display:flex; align-items:center; justify-content:space-between; }
+    .logo { font-size:1.5rem; font-weight:700; color:var(--text); text-decoration:none; }
+    .logo span { color:var(--accent); }
+    .privacy-badge { background:var(--surface2); border:1px solid var(--success); color:var(--success); padding:6px 14px; border-radius:20px; font-size:0.8rem; }
+    .hero { padding:50px 0 30px; text-align:center; }
+    .hero h1 { font-size:2.4rem; font-weight:800; margin-bottom:12px; }
+    .hero p { font-size:1.1rem; color:var(--text2); max-width:600px; margin:0 auto; }
+    .tool-area { background:var(--surface); border:1px solid var(--border); border-radius:16px; padding:40px; margin-bottom:40px; }
+    .drop-zone { border:2px dashed var(--border); border-radius:12px; padding:60px 20px; text-align:center; cursor:pointer; transition:all 0.2s; }
+    .drop-zone.dragover { border-color:var(--accent); background:var(--surface2); }
+    .drop-zone input { display:none; }
+    .btn { background:var(--accent); color:white; border:none; padding:12px 28px; border-radius:8px; font-size:1rem; font-weight:600; cursor:pointer; }
+    .btn:disabled { opacity:0.5; cursor:not-allowed; }
+    .controls { margin:24px 0; display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:16px; }
+    .control-group { display:flex; flex-direction:column; gap:8px; }
+    .control-group label { font-size:0.9rem; color:var(--text2); }
+    .control-group input, .control-group select { background:var(--surface2); color:var(--text); border:1px solid var(--border); padding:10px 12px; border-radius:6px; font-size:1rem; }
+    .control-group input[type=checkbox] { width:20px; height:20px; }
+    .preview { margin:24px 0; text-align:center; }
+    .preview img { max-width:100%; max-height:400px; border-radius:8px; }
+    .results { margin-top:24px; }
+    .result-card { background:var(--surface2); border:1px solid var(--border); border-radius:12px; padding:16px; display:flex; align-items:center; gap:16px; }
+    .result-card img { width:120px; height:120px; object-fit:cover; border-radius:8px; }
+    .download-btn { display:inline-block; background:var(--success); color:white; padding:8px 18px; border-radius:6px; text-decoration:none; font-weight:500; margin-top:8px; }
+    footer { text-align:center; padding:40px 0; border-top:1px solid var(--border); color:var(--text2); font-size:0.85rem; }
+    footer a { color:var(--accent); text-decoration:none; }
+    .support-box { background:var(--surface); border:1px solid var(--border); border-radius:12px; padding:20px; margin:0 auto 40px; max-width:500px; text-align:center; }
+    .support-box p { color:var(--text2); margin-bottom:12px; }
+    .support-btn { display:inline-block; background:var(--accent); color:white; padding:10px 24px; border-radius:8px; text-decoration:none; font-weight:600; }
+    .seo-content { padding:40px 0; color:var(--text2); font-size:0.95rem; max-width:800px; margin:0 auto; }
+    .seo-content h2 { color:var(--text); margin:24px 0 12px; font-size:1.3rem; }
+    @media (max-width:640px) { .hero h1{font-size:1.8rem;} .tool-area{padding:20px;} }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <a href="/" class="logo">File<span>Craft</span></a>
+      <span class="privacy-badge">🔒 100% Private</span>
+    </div>
+  </header>
+  <main class="container">
+    <section class="hero">
+      <h1>📐 Resize Image Online Free</h1>
+      <p>Resize images to exact dimensions or scale by percentage. Aspect ratio lock, batch support — all in your browser.</p>
+    </section>
+    <section class="tool-area">
+      <div class="drop-zone" id="dropZone">
+        <h3>Drop an image here</h3>
+        <p>or click to browse · JPG, PNG, WebP</p>
+        <input type="file" id="fileInput" accept="image/*">
+      </div>
+      <div id="editor" style="display:none;">
+        <div class="controls">
+          <div class="control-group">
+            <label>Width (px)</label>
+            <input type="number" id="width" min="1">
+          </div>
+          <div class="control-group">
+            <label>Height (px)</label>
+            <input type="number" id="height" min="1">
+          </div>
+          <div class="control-group">
+            <label style="display:flex;align-items:center;gap:8px;">
+              <input type="checkbox" id="lockRatio" checked> Lock aspect ratio
+            </label>
+          </div>
+          <div class="control-group">
+            <label>Scale %</label>
+            <input type="number" id="scale" min="1" max="500" value="100">
+          </div>
+        </div>
+        <div style="margin-top:16px;">
+          <button class="btn" id="resizeBtn">Resize</button>
+        </div>
+        <div class="preview" id="preview"></div>
+        <div class="results" id="results"></div>
+      </div>
+    </section>
+    <div class="support-box">
+      <p>If this saved you time, buy me a coffee ☕</p>
+      <a href="https://ko-fi.com/filecraft" target="_blank" class="support-btn">Support FileCraft</a>
+    </div>
+    <section class="seo-content">
+      <h2>How to Resize Images Online</h2>
+      <p>Upload your image, set the desired width and height (or use the scale percentage), and click Resize. The aspect ratio lock ensures your image doesn't get distorted. Download the resized image instantly.</p>
+      <h2>Common Image Sizes</h2>
+      <p><strong>Social media:</strong> Instagram post 1080×1080, Facebook cover 820×312, Twitter header 1500×500. <strong>Web:</strong> Blog hero 1920×1080, thumbnail 300×200. <strong>Print:</strong> 300 DPI minimum for quality output.</p>
+    </section>
+  </main>
+  <footer>
+    <div class="container">
+      <p>All tools run entirely in your browser — your files are never uploaded.</p>
+      <p style="margin-top:8px;"><a href="/">← More tools</a> · <a href="https://github.com/wilhewonthe/filecraft-tools">GitHub</a></p>
+    </div>
+  </footer>
+  <script>
+    const dropZone = document.getElementById('dropZone');
+    const fileInput = document.getElementById('fileInput');
+    const editor = document.getElementById('editor');
+    const widthInput = document.getElementById('width');
+    const heightInput = document.getElementById('height');
+    const lockRatio = document.getElementById('lockRatio');
+    const scaleInput = document.getElementById('scale');
+    const resizeBtn = document.getElementById('resizeBtn');
+    const preview = document.getElementById('preview');
+    const results = document.getElementById('results');
+    let originalImg, origW, origH, fileName;
+    const ratio = () => origW / origH;
+
+    dropZone.addEventListener('click', () => fileInput.click());
+    dropZone.addEventListener('dragover', e => { e.preventDefault(); dropZone.classList.add('dragover'); });
+    dropZone.addEventListener('dragleave', () => dropZone.classList.remove('dragover'));
+    dropZone.addEventListener('drop', e => { e.preventDefault(); dropZone.classList.remove('dragover'); if (e.dataTransfer.files[0]) loadFile(e.dataTransfer.files[0]); });
+    fileInput.addEventListener('change', e => { if (e.target.files[0]) loadFile(e.target.files[0]); });
+
+    function loadFile(file) {
+      fileName = file.name;
+      const reader = new FileReader();
+      reader.onload = e => {
+        const img = new Image();
+        img.onload = () => {
+          originalImg = img; origW = img.width; origH = img.height;
+          widthInput.value = origW; heightInput.value = origH; scaleInput.value = 100;
+          preview.innerHTML = `<img src="${e.target.result}" alt="original"><p style="color:var(--text2);margin-top:8px;">Original: ${origW} × ${origH}</p>`;
+          editor.style.display = 'block';
+        };
+        img.src = e.target.result;
+      };
+      reader.readAsDataURL(file);
+    }
+
+    widthInput.addEventListener('input', () => {
+      if (lockRatio.checked) heightInput.value = Math.round(widthInput.value / ratio());
+      scaleInput.value = Math.round(widthInput.value / origW * 100);
+    });
+    heightInput.addEventListener('input', () => {
+      if (lockRatio.checked) widthInput.value = Math.round(heightInput.value * ratio());
+      scaleInput.value = Math.round(heightInput.value / origH * 100);
+    });
+    scaleInput.addEventListener('input', () => {
+      const s = scaleInput.value / 100;
+      widthInput.value = Math.round(origW * s);
+      heightInput.value = Math.round(origH * s);
+    });
+
+    resizeBtn.addEventListener('click', () => {
+      const w = parseInt(widthInput.value), h = parseInt(heightInput.value);
+      if (!w || !h) return;
+      const canvas = document.createElement('canvas');
+      canvas.width = w; canvas.height = h;
+      const ctx = canvas.getContext('2d');
+      ctx.imageSmoothingEnabled = true;
+      ctx.imageSmoothingQuality = 'high';
+      ctx.drawImage(originalImg, 0, 0, w, h);
+      canvas.toBlob(blob => {
+        const url = URL.createObjectURL(blob);
+        const ext = fileName.replace(/\.[^.]+$/, '');
+        results.innerHTML = `<div class="result-card"><img src="${url}" alt="resized"><div><strong>${w} × ${h}</strong><br><span style="color:var(--text2);">${(blob.size/1024).toFixed(1)} KB</span><br><a href="${url}" download="${ext}_resized.png" class="download-btn">Download</a></div></div>`;
+      }, 'image/png');
+    });
+  </script>
+</body>
+</html>
